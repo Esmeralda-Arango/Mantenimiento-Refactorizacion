@@ -1,16 +1,18 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
+import javax.swing.*;
 // -------------------------------------------------------------------------
 /**
  * The main panel of the Chess game.
- * 
+ *
  * @author Ben Katz (bakatz)
  * @author Myles David II (davidmm2)
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
 public class ChessPanel
-    extends JPanel{
+        extends JPanel{
     private ChessMenuBar    menuBar;
     private ChessGameBoard  gameBoard;
     private ChessGameLog    gameLog;
@@ -26,6 +28,9 @@ public class ChessPanel
         settingLayout();
         gameEngine = new ChessGameEngine( gameBoard ); // start the game
     }
+
+    /*Aplicamos "move method" para mover ciertas funcionalidades que tenia la clase chesspanel afuera de ella y asi
+    simplificar el codigo y hacerlo mas legible, creamos los métodos initLayout y settingLayout */
 
     void initLayout() {
         this.setLayout( new BorderLayout() );
@@ -43,13 +48,12 @@ public class ChessPanel
         this.add( playerOneGraveyard, BorderLayout.WEST );
         this.add( playerTwoGraveyard, BorderLayout.EAST );
         this.setPreferredSize( new Dimension( 800, 600 ) );
+        gameEngine = new ChessGameEngine( gameBoard ); // start the game
     }
-
-
     // ----------------------------------------------------------
     /**
      * Gets the logger object for use in other classes.
-     * 
+     *
      * @return ChessGameLog the ChessGameLog object
      */
     public ChessGameLog getGameLog(){
@@ -58,7 +62,7 @@ public class ChessPanel
     // ----------------------------------------------------------
     /**
      * Gets the board object for use in other classes.
-     * 
+     *
      * @return ChessGameBoard the ChessGameBoard object
      */
     public ChessGameBoard getGameBoard(){
@@ -67,7 +71,7 @@ public class ChessPanel
     // ----------------------------------------------------------
     /**
      * Gets the game engine object for use in other classes
-     * 
+     *
      * @return ChessGameEngine the ChessGameEngine object
      */
     public ChessGameEngine getGameEngine(){
@@ -76,7 +80,7 @@ public class ChessPanel
     // ----------------------------------------------------------
     /**
      * Gets the appropriate graveyard object for use in other classes.
-     * 
+     *
      * @param whichPlayer
      *            the number of the player (1 or 2)
      * @return ChessGraveyard the graveyard requested

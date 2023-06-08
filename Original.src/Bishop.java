@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 // -------------------------------------------------------------------------
 /**
  * Class to represent the Bishop piece.
- * 
+ *
  * @author Ben Katz (bakatz)
  * @author Myles David II (davidmm2)
  * @author Danielle Bushrow (dbushrow)
@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 public class Bishop extends ChessGamePiece{
     /**
      * Creates a new Bishop object.
-     * 
+     *
      * @param board
      *            board the board to create the bishop on
      * @param row
@@ -28,7 +28,7 @@ public class Bishop extends ChessGamePiece{
     /**
      * Calculates the possible moves for this piece. These are ALL the possible
      * moves, including illegal (but at the same time valid) moves.
-     * 
+     *
      * @param board
      *            the game board to calculate moves on
      * @return ArrayList<String> the moves
@@ -48,25 +48,18 @@ public class Bishop extends ChessGamePiece{
     }
     /**
      * Creates an icon for this piece depending on the piece's color.
-     * 
+     *
      * @return ImageIcon the ImageIcon representation of this piece.
      */
+    /* Modificado extract method*/
+    /*En el método createImageByPieceType, hay repetición de código al construir la ruta de la imagen dependiendo del color de la pieza, este repetición de código
+    se da en todas las piezas para evaluar la imagePath de la pieza actual, para ellos podemos extraer esa parte en un método separado llamado,
+    por ejemplo, getImagePathByPieceType ubicado en CheesGamePiece para optimizar el codigo:*/
+
     @Override
-    public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhiteBishop.gif")
-            );            
-        }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackBishop.gif")
-            );
-        }
-        else{
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackBishop.gif")
-            );
-        }
+    public ImageIcon createImageByPieceType() {
+        String fileName = (getColorOfPiece() == ChessGamePiece.WHITE) ? "WhiteBishop" : "BlackBishop";
+        String imagePath = getImagePathByPieceType(fileName);
+        return new ImageIcon(getClass().getResource(imagePath));
     }
 }

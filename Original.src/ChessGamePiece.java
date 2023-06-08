@@ -735,4 +735,7 @@ public abstract class ChessGamePiece{
         return this.getClass().toString().substring( 6 ) + " @ (" + pieceRow
             + ", " + pieceColumn + ")";
     }
+    public String getImagePathByPieceType( String pieceType) {
+        return "chessImages/" + pieceType + ".gif";
+    }
 }
